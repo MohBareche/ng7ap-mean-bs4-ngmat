@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IssueService } from 'src/app/services/issue.service';
+import { Router } from '@angular/router';
+import { IssueService } from '../../services/issue.service';
+import { Issue } from '../../shared/issue.model';
 
 @Component({
   selector: 'app-list',
@@ -7,11 +9,35 @@ import { IssueService } from 'src/app/services/issue.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  constructor(private issueService: IssueService) {}
+  issues: Issue[];
+  displayedColumns = ['title', 'responsible', 'severity', 'status', 'actions'];
+
+  constructor(private issueService: IssueService, private router: Router) {}
 
   ngOnInit() {
-    this.issueService.getIssues().subscribe(issues => {
-      console.log(issues);
+    // this.issueService.getIssues().subscribe(issues => {
+    //   console.log(issues);
+    // });
+    this.fetchIssues();
+  }
+
+  fetchIssues() {
+    this.issueService.getIssues().subscribe((data: Issue[]) => {
+      this.issues = data;
+      console.log('Data requested...');
+      console.log(this.issues);
     });
+  }
+
+  editIssue(id) {
+    this.router.navigate([`/edit/${id}`]);
+  }
+
+  deleteIssue(id) {
+    if (confirm('Etes-vous sûr de vouloir supprimer cette opération?')) {
+      this.issueService.deleteIssue(id).subscribe(() => {
+        this.fetchIssues();
+      });
+    }
   }
 }
