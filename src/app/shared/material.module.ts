@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatRadioButton,
-  MatToolbarModule
+  MatToolbarModule,
+  MatRadioModule
 } from '@angular/material';
 
 @NgModule({
@@ -12,13 +12,13 @@ import {
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
-    MatRadioButton
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
-    MatRadioButton
+    MatRadioModule
   ]
 })
 export class MaterialModule {}
