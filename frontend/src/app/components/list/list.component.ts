@@ -34,7 +34,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteIssue(id) {
-    if (confirm('Etes-vous sûr de vouloir supprimer cette opération?')) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette opération?')) {
       this.issueService.deleteIssue(id).subscribe(() => {
         this.fetchIssues();
       });

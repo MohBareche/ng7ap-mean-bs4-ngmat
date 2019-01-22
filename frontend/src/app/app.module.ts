@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
 
 import { ExempleComponent } from './components/exemple/exemple.component';
 import { ListComponent } from './components/list/list.component';
@@ -26,8 +27,9 @@ import { IssueService } from './services/issue.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule
   ],
   exports: [MaterialModule],
